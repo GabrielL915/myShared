@@ -1,4 +1,4 @@
-package com.myShared.BackEnd;
+package com.myShared.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

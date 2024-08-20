@@ -1,4 +1,4 @@
-package com.myShared.BackEnd.domain.entities;
+package com.myShared.backend.domain.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,28 +16,27 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-
 @Entity
-@Table(name = "shared_file")
+@Table(name = "user")
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SharedFile {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id")
     private UUID id;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
 
-    @Column(name = "type", nullable = false)
-    private String type;
+    @Column(name = "password", nullable = false)
+    private String password;
 
     @CreationTimestamp
-    @Column(name ="created_at")
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
 }

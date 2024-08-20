@@ -1,4 +1,4 @@
-package com.myShared.BackEnd.domain.repository;
+package com.myShared.backend.domain.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
