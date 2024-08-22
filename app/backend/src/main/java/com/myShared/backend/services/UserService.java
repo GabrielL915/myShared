@@ -1,7 +1,7 @@
 package com.myShared.backend.services;
 
 import com.myShared.backend.domain.entities.User;
-import com.myShared.backend.domain.repository.custom.UserRepository;
+import com.myShared.backend.domain.repository.CRUDRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserService {
 
-    private final UserRepository userRepository;
+    private final CRUDRepository<User, String> userRepository;
 
     public List<User> findAll() {
         return userRepository.findAll();
