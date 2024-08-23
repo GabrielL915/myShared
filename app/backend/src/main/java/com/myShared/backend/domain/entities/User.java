@@ -32,7 +32,7 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id")
-    private UUID id;
+    private String id;
 
     @Column(name = "email", nullable = false, unique = true)
     private String email;

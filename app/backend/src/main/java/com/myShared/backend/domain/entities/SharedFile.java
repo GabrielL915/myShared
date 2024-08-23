@@ -5,6 +5,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,7 +32,10 @@ public class SharedFile {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id")
-    private UUID id;
+    private String id;
+
+    @Column(name = "sharedId", nullable = false, updatable = false)
+    private String sharedId;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -38,6 +44,17 @@ public class SharedFile {
     private String type;
 
     @CreationTimestamp
-    @Column(name ="created_at")
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @PrePersist
+    public void generateSharedId() {
+        if (this.sharedId == null) {
+            this.sharedId = UUID.randomUUID().toString();
+        }
+    }
 }
