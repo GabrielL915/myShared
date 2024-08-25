@@ -32,17 +32,6 @@ public class SharedFilesService {
                 .toList();
     }
 
-    @Scheduled(fixedRate = 3000)
-    private void updateSharedIdPeriodically() {
-        List<SharedFile> sharedFiles = crudRepository.findAll();
-        for (SharedFile sharedFile : sharedFiles) {
-            sharedFile.setSharedId(UUID.randomUUID().toString());
-            crudRepository.save(sharedFile);
-        }
-    }
-
-    //send file
-
     //check files sended
 
     //search by file name

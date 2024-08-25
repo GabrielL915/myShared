@@ -34,27 +34,19 @@ public class SharedFile {
     @Column(name = "id")
     private String id;
 
-    @Column(name = "sharedId", nullable = false, updatable = false)
-    private String sharedId;
-
     @Column(name = "name", nullable = false)
     private String name;
 
     @Column(name = "type", nullable = false)
     private String type;
 
+    @Column(name = "id_from", nullable = false)
+    private String idFrom;
+
+    @Column(name = "id_To", nullable = false)
+    private String idTo;
+
     @CreationTimestamp
     @Column(name = "created_at")
     private LocalDateTime createdAt;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-
-    @PrePersist
-    public void generateSharedId() {
-        if (this.sharedId == null) {
-            this.sharedId = UUID.randomUUID().toString();
-        }
-    }
 }

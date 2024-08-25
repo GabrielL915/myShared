@@ -18,13 +18,13 @@ public class SharedFileDTO {
 
     private String id;
 
-    private String sharedId;
-
     private String name;
 
     private String type;
 
-    private LocalDateTime createAt;
+    private String idFrom;
 
-    private String userId;
+    private String idTo;
+
+    private LocalDateTime createAt;
 }
