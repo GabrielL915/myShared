@@ -2,19 +2,13 @@ package com.myShared.backend.services;
 
 import com.myShared.backend.domain.dto.SharedFileDTO;
 import com.myShared.backend.domain.entities.SharedFile;
-import com.myShared.backend.domain.repository.CRUDRepository;
 import com.myShared.backend.domain.repository.custom.SharedFileRepository;
 import com.myShared.backend.services.mapper.custom.SharedFilesMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
