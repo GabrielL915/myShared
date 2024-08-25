@@ -31,15 +31,17 @@ public class SharedFilesService {
                 .toList();
     }
 
-    public List<SharedFileDTO> findAllByUserFromId(String userFromId) {
+    public List<SharedFileDTO> findAllByUserFromId(String userFromId, int pageNumber, int pageSize) {
 
         Sort sort = Sort.by(Sort.Direction.DESC, "createdAt");
         List<SharedFile> sharedFiles = sharedFileRepository.findAllByIdFrom(userFromId, sort);
 
-        return sharedFiles.stream()
+        return sharedFiles.stream().skip((long) (pageNumber - 1) * pageSize)
+                .limit(pageSize)
                 .map(sharedFilesMapper::toDTO)
                 .toList();
     }
 
-    //search by file name filter
+
+    //TODO: search by file name filter
 }
