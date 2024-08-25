@@ -3,8 +3,13 @@ package com.myShared.backend.services;
 import com.myShared.backend.domain.dto.SharedFileDTO;
 import com.myShared.backend.domain.entities.SharedFile;
 import com.myShared.backend.domain.repository.CRUDRepository;
+import com.myShared.backend.domain.repository.custom.SharedFileRepository;
 import com.myShared.backend.services.mapper.custom.SharedFilesMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -15,24 +20,32 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class SharedFilesService {
 
-    private final CRUDRepository<SharedFile, String> crudRepository;
+    private final SharedFileRepository sharedFileRepository;
 
     private final SharedFilesMapper sharedFilesMapper;
 
     public SharedFileDTO create(SharedFileDTO sharedFileDTO) {
         SharedFile newSharedFile = sharedFilesMapper.toEntity(sharedFileDTO);
 
-        return sharedFilesMapper.toDTO(crudRepository.save(newSharedFile));
+        return sharedFilesMapper.toDTO(sharedFileRepository.save(newSharedFile));
     }
 
     public List<SharedFileDTO> findAll() {
-        return crudRepository.findAll()
+        return sharedFileRepository.findAll()
                 .stream()
                 .map(sharedFilesMapper::toDTO)
                 .toList();
     }
 
-    //check files sended
+    public List<SharedFileDTO> findAllByUserFromId(String userFromId) {
 
-    //search by file name
+        Sort sort = Sort.by(Sort.Direction.DESC, "createdAt");
+        List<SharedFile> sharedFiles = sharedFileRepository.findAllByIdFrom(userFromId, sort);
+
+        return sharedFiles.stream()
+                .map(sharedFilesMapper::toDTO)
+                .toList();
+    }
+
+    //search by file name filter
 }
