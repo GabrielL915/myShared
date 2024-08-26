@@ -43,5 +43,9 @@ public class SharedFilesService {
     }
 
 
-    //TODO: search by file name filter
+    public SharedFileDTO findByName(String name) {
+        SharedFile sharedFile = sharedFileRepository.findByName(name).orElseThrow();
+
+        return sharedFilesMapper.toDTO(sharedFile);
+    }
 }

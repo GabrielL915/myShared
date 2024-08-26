@@ -21,6 +21,7 @@ import java.util.List;
 public class SharedFilesController {
 
     private static final String PATH_PAGINATE = "/{id}/page/{pageNumber}/{pageSize}";
+    private static final String PATH_NAME = "/{name}";
 
     private final SharedFilesService sharedFilesService;
 
@@ -37,9 +38,15 @@ public class SharedFilesController {
         return ResponseEntity.ok(list);
     }
 
+    @GetMapping(PATH_NAME)
+    public ResponseEntity<SharedFileDTO> findByName(@PathVariable String name) {
+        var sharedFile = sharedFilesService.findByName(name);
+        return ResponseEntity.ok(sharedFile);
+    }
+
     @GetMapping(PATH_PAGINATE)
-    public  ResponseEntity<List<SharedFileDTO>> findAllByIdFrom(@PathVariable String id, @PathVariable("pageNumber") final int pageNumber,
-                                                                @PathVariable("pageSize") final int pageSize) {
+    public ResponseEntity<List<SharedFileDTO>> findAllByIdFrom(@PathVariable String id, @PathVariable("pageNumber") final int pageNumber,
+                                                               @PathVariable("pageSize") final int pageSize) {
         var list = sharedFilesService.findAllByUserFromId(id, pageNumber, pageSize);
         return ResponseEntity.ok(list);
     }

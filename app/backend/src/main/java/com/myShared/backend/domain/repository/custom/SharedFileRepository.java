@@ -6,7 +6,11 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface SharedFileRepository extends CRUDRepository<SharedFile, String> {
-    List<SharedFile> findAllByIdFrom(String idFrom, Sort sort);}
+    Optional<SharedFile> findByName(String name);
+
+    List<SharedFile> findAllByIdFrom(String idFrom, Sort sort);
+}
