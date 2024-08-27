@@ -1,0 +1,24 @@
+meta {
+  name: Send file
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{base_url}}/my-shared/shared
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYWJyaWVsMDFAZ21haWwuY29tIiwiaWF0IjoxNzI0NzY5NjYwLCJleHAiOjE3MjQ3NzMyNjB9.j7knCkrd3BhG9ATo17_xU8vZJ73H4y-ceM0BLMR7TEg
+}
+
+body:json {
+  {
+    "name": "Image001",
+    "type": "png",
+    "idFrom": "73a0cc13-7474-4ec7-9801-d0dca9db72e3",
+    "idTo": "testet444"
+  }
+}
