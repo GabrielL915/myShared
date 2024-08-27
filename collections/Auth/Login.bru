@@ -1,0 +1,18 @@
+meta {
+  name: Login
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{base_url}}/my-shared/auth/login
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "email": "gabriel01@gmail.com",
+    "password": "senha123"
+  }
+}

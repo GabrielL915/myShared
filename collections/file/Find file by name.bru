@@ -1,0 +1,24 @@
+meta {
+  name: Find file by name
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{base_url}}/my-shared/shared/Image001
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYWJyaWVsMDFAZ21haWwuY29tIiwiaWF0IjoxNzI0NzY5NjYwLCJleHAiOjE3MjQ3NzMyNjB9.j7knCkrd3BhG9ATo17_xU8vZJ73H4y-ceM0BLMR7TEg
+}
+
+body:json {
+  {
+    "name": "Image001",
+    "type": "png",
+    "idFrom": "2cc4f447-1e82-47c0-86bb-291a7a4af6e8",
+    "idTo": "testet444"
+  }
+}
