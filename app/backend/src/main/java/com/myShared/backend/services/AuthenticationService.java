@@ -5,6 +5,7 @@ import com.myShared.backend.domain.dto.LoginUserDTO;
 import com.myShared.backend.domain.dto.RegisterUserDTO;
 import com.myShared.backend.domain.entities.User;
 import com.myShared.backend.domain.repository.custom.UserRepository;
+import com.myShared.backend.services.exception.EntityNotFoundException;
 import com.myShared.backend.services.mapper.custom.RegisterUserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -31,7 +32,7 @@ public class AuthenticationService {
     public LoginResponseDTO authenticate(LoginUserDTO userDTO) {
         authenticateUser(userDTO.getEmail(), userDTO.getPassword());
 
-        User existingUser = userRepository.findByEmail(userDTO.getEmail()).orElseThrow();
+        User existingUser = userRepository.findByEmail(userDTO.getEmail()).orElseThrow(() -> new EntityNotFoundException(userDTO.getEmail()));
 
         String jwtToken = jwtService.generateToken(existingUser);
         return buildLoginResponse(jwtToken);

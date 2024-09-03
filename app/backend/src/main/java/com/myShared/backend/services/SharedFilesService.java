@@ -3,6 +3,7 @@ package com.myShared.backend.services;
 import com.myShared.backend.domain.dto.SharedFileDTO;
 import com.myShared.backend.domain.entities.SharedFile;
 import com.myShared.backend.domain.repository.custom.SharedFileRepository;
+import com.myShared.backend.services.exception.EntityNotFoundException;
 import com.myShared.backend.services.mapper.custom.SharedFilesMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
@@ -44,7 +45,7 @@ public class SharedFilesService {
 
 
     public SharedFileDTO findByName(String name) {
-        SharedFile sharedFile = sharedFileRepository.findByName(name).orElseThrow();
+        SharedFile sharedFile = sharedFileRepository.findByName(name).orElseThrow(() -> new EntityNotFoundException(name));
 
         return sharedFilesMapper.toDTO(sharedFile);
     }
