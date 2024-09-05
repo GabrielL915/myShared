@@ -13,6 +13,17 @@ services:
       - pg-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+
+  app:
+    build: .
+    container_name: "mySharedBacked-app"
+    environment:
+      DB_USERNAME: myuser
+      DB_PASSWORD: qwe123
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
 volumes:
     pg-data:
       driver: local
