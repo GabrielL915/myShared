@@ -3,10 +3,10 @@ FROM maven:3.8.5-openjdk-17 AS build
 WORKDIR /app
 
 # Copia o pom.xml para o diretório de trabalho
-COPY app/backend/pom.xml .
+COPY pom.xml .
 
 # Copia a pasta src para o diretório de trabalho
-COPY app/backend/src ./src
+COPY src ./src
 
 # Executa o Maven para construir o projeto
 RUN mvn clean package -DskipTests

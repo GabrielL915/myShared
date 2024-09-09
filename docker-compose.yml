@@ -15,11 +15,14 @@ services:
       - "5432:5432"
 
   app:
-    build: .
+    build:
+      context: ./app/backend
+      dockerfile: Dockerfile
     container_name: "mySharedBacked-app"
     environment:
       DB_USERNAME: myuser
       DB_PASSWORD: qwe123
+      JWT_SECRET: 7a5185c55950698055875fe3cd76abb5cad9566547b1e325ebe02664e3e52028
     ports:
       - "8080:8080"
     depends_on:
