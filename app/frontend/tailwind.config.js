@@ -13,6 +13,21 @@ export default {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		colors: {
+			custombackground: {
+				DEFAULT: '#090A0C',
+			},
+			customforeground: {
+				DEFAULT: '#212D30',
+			},
+			customcard: {
+				DEFAULT: '#1A1E23',
+			},
+			customText: {
+				DEFAULT: '#F5F5F5',
+			},
+			customButton: {
+				DEFAULT: '#77B5F8',
+			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
