@@ -1,4 +1,5 @@
 import React from "react";
+import Card from "../ui/card";
 import { FileItem } from "../../lib/types";
 
 interface FileHistoryProps {
@@ -13,20 +14,7 @@ const FileHistory: React.FC<FileHistoryProps> = ({ files }) => {
       </h2>
       <ul>
         {files.map((file) => (
-          <li
-            key={file.id}
-            className="flex items-center mb-3 p-2 bg-customcard rounded hover:bg-gray-800"
-          >
-            <img
-              src={file.icon}
-              alt={`${file.name} icon`}
-              className="w-8 h-8 mr-3"
-            />
-            <div>
-              <p className="text-sm text-customText font-medium">{file.name}</p>
-              <p className="text-xs text-gray-400">{file.type}</p>
-            </div>
-          </li>
+          <Card key={file.id} icon={file.icon} name={file.name} type={file.type} />
         ))}
       </ul>
     </aside>
