@@ -1,11 +1,11 @@
 import "./App.css";
 import MainLayout from "./layout/MainLayout";
-import SheetCreation from "./components/feature/SheetCreation";
+import SheetCard from "./components/feature/sheetCard";
 
 function App() {
   return (
     <MainLayout>
-      <SheetCreation />
+      <SheetCard />
     </MainLayout>
   );
 }
