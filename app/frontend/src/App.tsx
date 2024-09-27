@@ -1,11 +1,12 @@
 import "./App.css";
+import { TopNav } from "./components/feature/TopNav";
 import MainLayout from "./layout/MainLayout";
-import SheetCard from "./components/feature/sheetCard";
-
+import SheetsPage from "./pages/SheetPage";
 function App() {
   return (
     <MainLayout>
-      <SheetCard />
+      <TopNav />
+      <SheetsPage />
     </MainLayout>
   );
 }
