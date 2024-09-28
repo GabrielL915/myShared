@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import SheetCard from "@/components/feature/SheetCard";
 
 interface Sheet {
@@ -11,40 +11,43 @@ interface Sheet {
 }
 
 const SheetsPage = () => {
-  const sheets: Sheet[] = [
-    {
-      username: "GabrielL915",
-      repoName: "repository.ts",
-      lastActive: "2 weeks ago",
-      description: "Repository interface",
-      fileCount: 2,
-      tags: ["TypeScript", "Interface"],
-    },
-    {
-      username: "GabrielL915",
-      repoName: "api-client.js",
-      lastActive: "1 month ago",
-      description: "API client implementation",
-      fileCount: 1,
-      tags: ["JavaScript", "API"],
-    },
-    {
-      username: "GabrielL915",
-      repoName: "utils.py",
-      lastActive: "3 days ago",
-      description: "Utility functions",
-      fileCount: 3,
-      tags: ["Python", "Utilities"],
-    },
-    {
-      username: "GabrielL915",
-      repoName: "package.json",
-      lastActive: "1 year ago",
-      description: "Package configuration",
-      fileCount: 1,
-      tags: ["JSON", "Configuration"],
-    },
-  ];
+  const sheets: Sheet[] = useMemo(
+    () => [
+      {
+        username: "GabrielL915",
+        repoName: "repository.ts",
+        lastActive: "2 weeks ago",
+        description: "Repository interface",
+        fileCount: 2,
+        tags: ["TypeScript", "Interface"],
+      },
+      {
+        username: "GabrielL915",
+        repoName: "api-client.js",
+        lastActive: "1 month ago",
+        description: "API client implementation",
+        fileCount: 1,
+        tags: ["JavaScript", "API"],
+      },
+      {
+        username: "GabrielL915",
+        repoName: "utils.py",
+        lastActive: "3 days ago",
+        description: "Utility functions",
+        fileCount: 3,
+        tags: ["Python", "Utilities"],
+      },
+      {
+        username: "GabrielL915",
+        repoName: "package.json",
+        lastActive: "1 year ago",
+        description: "Package configuration",
+        fileCount: 1,
+        tags: ["JSON", "Configuration"],
+      },
+    ],
+    []
+  );
 
   const [filterTags, setFilterTags] = useState<string[]>([]);
 

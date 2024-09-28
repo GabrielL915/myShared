@@ -21,9 +21,9 @@ const SheetCard: React.FC<SheetCardProps> = ({
       <div className="flex items-center justify-between">
         <div className="flex items-center flex-grow">
           <img
-            src="/api/placeholder/20/20"
+            src="https://utfs.io/f/c166bb56-8deb-48d7-ac0e-66d221067a65-qdb2q8.08.09_b034a4cb.jpg"
             alt="Profile picture"
-            className="w-5 h-5 rounded-full mr-3"
+            className="w-6 h-6 rounded-full mr-3 object-cover"
           />
           <div className="text-sm">
             <div className="flex items-center">
