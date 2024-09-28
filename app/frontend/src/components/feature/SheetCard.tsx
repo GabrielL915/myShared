@@ -1,38 +1,62 @@
+import React from "react";
 import { FileText } from "lucide-react";
 
 interface SheetCardProps {
   username: string;
   repoName: string;
   lastActive: string;
-  description: string;
   fileCount: number;
+  tags: string[];
 }
-const SheetCard = ({ username, repoName, lastActive, description, fileCount }: SheetCardProps) => {
-    return (
-      <div className="flex items-center p-4 bg-gray-800 text-white border-b border-gray-700">
-        <img
-          src="/api/placeholder/40/40"
-          alt="Profile picture"
-          className="w-10 h-10 rounded-full mr-4"
-        />
-        <div className="flex-grow">
-          <div className="flex items-center">
-            <a href="#" className="text-blue-400 hover:underline">
-              {username}
-            </a>
-            <span className="mx-1">/</span>
-            <a href="#" className="text-blue-400 hover:underline">
-              {repoName}
-            </a>
+
+const SheetCard: React.FC<SheetCardProps> = ({
+  username,
+  repoName,
+  lastActive,
+  fileCount,
+  tags,
+}) => {
+  return (
+    <div className="flex flex-col p-4 text-white border-b border-gray-700">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center flex-grow">
+          <img
+            src="/api/placeholder/20/20"
+            alt="Profile picture"
+            className="w-5 h-5 rounded-full mr-3"
+          />
+          <div className="text-sm">
+            <div className="flex items-center">
+              <a href="#" className="text-blue-400 hover:underline mr-1">
+                {username}
+              </a>
+              <span className="text-gray-500">/</span>
+              <a href="#" className="text-blue-400 hover:underline ml-1">
+                {repoName}
+              </a>
+            </div>
+            <div className="text-gray-400 text-xs">
+              Last active {lastActive}
+            </div>
           </div>
-          <div className="text-gray-400">Last active {lastActive}</div>
-          <div className="text-gray-400">{description}</div>
         </div>
-        <div className="flex items-center">
-          <FileText className="w-5 h-5 text-gray-400 mr-2" />
-          <span className="text-gray-400">{fileCount} {fileCount === 1 ? 'file' : 'files'}</span>
+        <div className="flex items-center text-xs text-gray-400">
+          <FileText className="w-4 h-4 mr-1" />
+          <span>{`${fileCount} files`}</span>
         </div>
       </div>
-    );
-  };
+      <div className="mt-2 flex flex-wrap">
+        {tags.map((tag, index) => (
+          <span
+            key={index}
+            className="bg-gray-700 text-xs text-gray-300 px-2 py-1 rounded-full mr-2 mb-2"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 export default SheetCard;
