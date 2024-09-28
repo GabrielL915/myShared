@@ -28,7 +28,7 @@ const SheetCreation = () => {
           Add file
         </Button>
         <Button className="bg-green-600">
-          Create secret gist
+          Create secret sheet
           <ChevronDown size={16} className="ml-1" />
         </Button>
       </div>
