@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import MainLayout from './layout/MainLayout';
 import { TopNav } from './components/feature/TopNav';
 import SheetsPage from './pages/SheetPage';
-import SheetCreation from './components/feature/SheetCreation';
+import SheetCreation from './pages/SheetCreation';
 import SignInPage from './pages/SignInPage';
 
 function App() {
