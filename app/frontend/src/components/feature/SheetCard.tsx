@@ -1,4 +1,3 @@
-import React from "react";
 import { FileText } from "lucide-react";
 
 interface SheetCardProps {
@@ -7,6 +6,8 @@ interface SheetCardProps {
   lastActive: string;
   fileCount: number;
   tags: string[];
+  selected: boolean; // Novo: para indicar se o card está selecionado
+  onSelect: () => void; // Novo: callback para alternar a seleção
 }
 
 const SheetCard: React.FC<SheetCardProps> = ({
@@ -15,16 +16,14 @@ const SheetCard: React.FC<SheetCardProps> = ({
   lastActive,
   fileCount,
   tags,
+  selected,
+  onSelect,
 }) => {
   return (
-    <div className="flex flex-col p-4 text-white border-b border-gray-700">
+    <div className={`flex flex-col p-4 text-white border-b border-gray-700 ${selected ? 'bg-gray-600' : 'bg-gray-800'}`}>
       <div className="flex items-center justify-between">
         <div className="flex items-center flex-grow">
-          <img
-            src="https://utfs.io/f/c166bb56-8deb-48d7-ac0e-66d221067a65-qdb2q8.08.09_b034a4cb.jpg"
-            alt="Profile picture"
-            className="w-6 h-6 rounded-full mr-3 object-cover"
-          />
+          <input type="checkbox" checked={selected} onChange={onSelect} className="mr-3" />
           <div className="text-sm">
             <div className="flex items-center">
               <a href="#" className="text-blue-400 hover:underline mr-1">
@@ -49,7 +48,7 @@ const SheetCard: React.FC<SheetCardProps> = ({
         {tags.map((tag, index) => (
           <span
             key={index}
-            className="bg-gray-700 text-xs text-gray-300 px-2 py-1 rounded-full mr-2 mb-2"
+            className="px-2 py-1 mr-2 mb-2 text-xs rounded bg-gray-700"
           >
             {tag}
           </span>
